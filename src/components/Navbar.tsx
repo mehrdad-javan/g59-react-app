@@ -1,5 +1,5 @@
 import React from "react";
-import {Home, Info, Star, Phone, Calendar} from "lucide-react";
+import {Calendar} from "lucide-react";
 // npm install lucide-react
 
 type NavItem = {
@@ -7,16 +7,13 @@ type NavItem = {
     href: string;
     icon: React.ElementType;
 }
+type NavProps = {
+    items: NavItem[];
+    title: string;
+}
 
-const Navbar = () => {
-    const title = "EventApp";
+const Navbar = ({items, title}: NavProps) => {
 
-    const items: NavItem[] = [
-        {label: 'Home', href: '#', icon: Home},
-        {label: 'About', href: '#', icon: Info},
-        {label: 'Features', href: '#', icon: Star},
-        {label: 'Contact', href: '#', icon: Phone}
-    ];
 
     return (
         <nav
