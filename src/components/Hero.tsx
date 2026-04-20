@@ -1,5 +1,18 @@
 
 const Hero = () => {
+
+    // define js and ts variables
+    // define js functions
+
+    const handelScrollToEvents = ()  => {
+        console.log('### scroll to events ###');
+        document.getElementById('events-list')?.scrollIntoView({behavior: 'smooth'});
+    }
+
+    const handelCreateEvent = () => {
+        console.log('### create event ###');
+    }
+
     return (
         <div className="relative flex flex-col justify-center items-center py-28 px-4 overflow-hidden bg-white border-b border-slate-100">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden">
@@ -31,11 +44,11 @@ const Hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6">
-                    <button className="group relative bg-red-600 text-white px-10 py-4 rounded-2xl font-bold text-lg border-2 border-red-500 hover:bg-red-700 transition-all shadow-2xl shadow-red-200 hover:shadow-red-400 transform hover:-translate-y-1 active:scale-95 overflow-hidden">
+                    <button onClick={handelCreateEvent} className="group relative bg-red-600 text-white px-10 py-4 rounded-2xl font-bold text-lg border-2 border-red-500 hover:bg-red-700 transition-all shadow-2xl shadow-red-200 hover:shadow-red-400 transform hover:-translate-y-1 active:scale-95 overflow-hidden">
                         <span className="relative z-10 text-white">Create Event</span>
                         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
                     </button>
-                    <button className="group bg-white border-2 border-slate-200 text-slate-900 px-10 py-4 rounded-2xl font-bold text-lg hover:border-red-600 hover:text-red-600 transition-all transform hover:-translate-y-1 active:scale-95 shadow-lg shadow-slate-100 flex items-center justify-center">
+                    <button onClick={handelScrollToEvents} className="group bg-white border-2 border-slate-200 text-slate-900 px-10 py-4 rounded-2xl font-bold text-lg hover:border-red-600 hover:text-red-600 transition-all transform hover:-translate-y-1 active:scale-95 shadow-lg shadow-slate-100 flex items-center justify-center">
                         Browse Events
                         <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
