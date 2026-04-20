@@ -4,9 +4,8 @@ import Navbar from "./components/Navbar.tsx";
 import Hero from "./components/Hero.tsx";
 import EventList from "./components/EventList.tsx";
 import Footer from "./components/Footer.tsx";
-import RegisterModal from "./components/RegisterModal.tsx";
-import Toast from "./components/Toast.tsx";
 import {Home, Info, Phone, Star} from "lucide-react";
+import React from "react";
 
 type NavItem = {
     label: string;
@@ -33,15 +32,15 @@ const App = () => {
             <EventList/>
             <Footer/>
 
-            <RegisterModal/>
+
 
             { /*
             <Toast message="Event Created successfully" type="success" onClose={() => alert('Toast Closed')}/>
             <Toast message="Please enter a valid email!" type="error" onClose={() => alert('Toast Closed')}/>
 
-            */}
 
             <Toast message="Please enter a valid email!" type="info" onClose={() => alert('Toast Closed')}/>
+            */}
 
         </>
     );

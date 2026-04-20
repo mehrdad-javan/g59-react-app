@@ -1,4 +1,5 @@
 import {AlertCircle, CheckCircle2, Info, X} from "lucide-react";
+import {useEffect} from "react";
 
 type ToastType = "success" | "error" | "info";
 
@@ -22,6 +23,19 @@ const Toast = ({message, type = 'success', onClose}: ToastProps) => {
         error: 'bg-rose-50 border-rose-100',
         info: 'bg-blue-50 border-blue-100'
     }
+
+
+    useEffect(  ()=> {
+        console.log('Toast mounted');
+        const timer = setTimeout(onClose, 3000);
+
+
+        return () => {
+            console.log('Toast unmounted');
+            clearTimeout(timer);
+        }
+
+    }   ,    [onClose]);
 
     return (
         <div className="fixed bottom-8 right-8 z-[100]">

@@ -14,3 +14,9 @@ export interface EventItemProps {
     event: EventItem;
     onRegister: () => void;
 }
+
+export interface RegisterModalProps {
+    event: EventItem;
+    onClose: () => void;
+    onSuccess: (message: string) => void;
+}
