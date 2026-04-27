@@ -16,6 +16,7 @@ const EventList = () => {
     const [toastMessage, setToastMessage] = useState<string>("");
 
     const [events, setEvents] = useState<EventItem[]>([]);
+    const [reloadEvents, setReloadEvents] = useState<boolean>(false);
 
     useEffect(() => {
         /*const fetchedDataFromAPI: EventItem[] = [
@@ -109,7 +110,7 @@ const EventList = () => {
 
         void loadEvents();
 
-    }, [])
+    }, [reloadEvents])
 
     const handleClick = (event: EventItem) => {
         console.log('### Selected Event ###', event);
@@ -156,6 +157,8 @@ const EventList = () => {
                 setSeletcedEvent(undefined);
                 setToastMessage(message);
                 setShowToast(true);
+
+                setReloadEvents(!reloadEvents);
             }} />)}
 
             {showToast && (<Toast message={toastMessage} type="success" onClose={() => setShowToast(false)} />)}
