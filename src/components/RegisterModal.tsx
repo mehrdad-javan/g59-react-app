@@ -1,11 +1,15 @@
 import type {RegisterModalProps} from "../types.ts";
 import {X} from "lucide-react";
 import {type ChangeEvent, type SubmitEvent, useState} from "react";
+import {addParticipantToEvent} from "../api/eventAPI.ts";
 
 const RegisterModal = ({event, onClose, onSuccess}: RegisterModalProps) => {
 
     const [formData, setFormData] = useState<{ name: string; email: string; }>({name: '', email: ''});
     const [errors, setErrors] = useState<{ name?: string; email?: string; }>({});
+
+    const [apiError, setApiError] = useState<string>("");
+
 
     const handelInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         console.log('### handelInputChange ###');
@@ -20,7 +24,7 @@ const RegisterModal = ({event, onClose, onSuccess}: RegisterModalProps) => {
         onClose();
     }
 
-    const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('### handleSubmit ###');
 
@@ -42,8 +46,15 @@ const RegisterModal = ({event, onClose, onSuccess}: RegisterModalProps) => {
             return;
         }
 
-        onSuccess('Registration successful!');
-        handelClose();
+        try {
+            await addParticipantToEvent(event.id, formData);
+
+            onSuccess('Registration successful!');
+            handelClose();
+        } catch (error) {
+            console.log(error);
+            setApiError(error instanceof  Error ? error.message : "Registration failed");
+        }
 
 
     }
@@ -80,6 +91,13 @@ const RegisterModal = ({event, onClose, onSuccess}: RegisterModalProps) => {
                     <div className="border-t border-slate-100 pt-8">
                         <h3 className="text-xl font-semibold mb-4">Register for this Event</h3>
                         <form id="registration-form" className="space-y-4" onSubmit={handleSubmit}>
+                            {
+                                apiError && (
+                                    <p className="rounded-lg bg-red-50 p-3 text-sm text-red-700">
+                                        {apiError}
+                                    </p>
+                                )
+                            }
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                                 <input

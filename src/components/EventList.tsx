@@ -3,6 +3,7 @@ import type {EventItem} from "../types.ts";
 import {useEffect, useState} from "react";
 import RegisterModal from "./RegisterModal.tsx";
 import Toast from "./Toast.tsx";
+import {getAllEvents} from "../api/eventAPI.ts";
 
 
 
@@ -17,7 +18,7 @@ const EventList = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
 
     useEffect(() => {
-        const fetchedDataFromAPI: EventItem[] = [
+        /*const fetchedDataFromAPI: EventItem[] = [
             {
                 id: 1,
                 image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4",
@@ -80,6 +81,33 @@ const EventList = () => {
             }
         ];
         setEvents(fetchedDataFromAPI);
+         */
+
+        const loadEvents = async () => {
+            try {
+                const data = await getAllEvents();
+                setEvents(data.map(event => {
+                    const eventDate = new Date(event.dateTime);
+
+                    return {
+                        id: event.id,
+                        title: event.title,
+                        date: eventDate.toLocaleDateString('sv-SE'),
+                        time: eventDate.toLocaleTimeString('sv-SE'),
+                        location: event.location,
+                        attendees: event.attendees,
+                        image: event.imageUrl,
+                        category: event.category,
+
+                    } as EventItem;
+                }))
+
+            } catch (error){
+                // todo: set the error message to api error state
+            }
+        }
+
+        void loadEvents();
 
     }, [])
 
