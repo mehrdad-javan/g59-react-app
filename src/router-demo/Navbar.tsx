@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -7,43 +7,41 @@ const Navbar = () => {
         <nav className="bg-gray-800 p-4 text-white mb-4">
             <ul className="flex space-x-4">
                 <li>
-                    <a
-                        href="/"
-                        className="hover:text-blue-400"
-
-                    >
+                    <Link
+                        to="/"
+                        className="hover:text-blue-400" >
                         Home
-                    </a>
+                    </Link>
                 </li>
 
                 <li>
-                    <a
-                        href="/about"
+                    <Link
+                        to="/about"
                         className="hover:text-blue-400"
 
                     >
                         About
-                    </a>
+                    </Link>
                 </li>
 
                 <li>
-                    <a
-                        href="/contact"
+                    <Link
+                        to="/contact"
                         className="hover:text-blue-400"
 
                     >
                         Contact
-                    </a>
+                    </Link>
                 </li>
 
                 <li>
-                    <a
-                        href="/user/123"
+                    <Link
+                        to="/user/123"
                         className="hover:text-blue-400"
 
                     >
                         User Profile
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

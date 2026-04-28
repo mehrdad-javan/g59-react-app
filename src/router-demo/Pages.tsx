@@ -1,3 +1,5 @@
+import {useParams, useNavigate} from "react-router-dom";
+
 export const Home = () => (
     <div className="p-4">
         <h1 className="text-2xl font-bold">Home Page</h1>
@@ -14,6 +16,13 @@ export const About = () => (
 );
 
 export const Contact = () => {
+
+    const navigate = useNavigate();
+
+    const handelClick = () => {
+        navigate("/about");
+    }
+
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold text-green-600">Contact Us</h1>
@@ -21,16 +30,20 @@ export const Contact = () => {
                 <input className="border p-2 rounded" type="text" placeholder="Your Name" />
                 <textarea className="border p-2 rounded" placeholder="Your Message"></textarea>
                 <button className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Send</button>
+                <button type="button" className="bg-red-500 text-white p-2 rounded hover:bg-red-600" onClick={handelClick}>Click Me</button>
             </form>
         </div>
     );
 };
 
 export const UserProfile = () => {
+
+    const {userId} = useParams<{ userId: string }>();
+
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold text-purple-600">User Profile</h1>
-            <p>Viewing profile for User ID <span className="font-mono bg-yellow-100 p-1"></span></p>
+            <p>Viewing profile for User ID <span className="font-mono bg-yellow-100 p-1">{userId}</span></p>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import Navbar from "./Navbar.tsx";
+import {Outlet} from "react-router-dom";
 
 const AppLayout = () => {
 
@@ -10,6 +11,7 @@ const AppLayout = () => {
 
             <main className="container mx-auto p-4 bg-white shadow-md rounded-lg">
                 {/* Render Components */}
+                <Outlet />
 
 
             </main>
