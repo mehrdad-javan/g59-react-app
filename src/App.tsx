@@ -1,12 +1,8 @@
 // rsc: used to create react arrow function
 
-import Navbar from "./components/Navbar.tsx";
-import Hero from "./components/Hero.tsx";
-import EventList from "./components/EventList.tsx";
-import Footer from "./components/Footer.tsx";
-import {Home, Info, Phone, Star} from "lucide-react";
-import React from "react";
-
+//import {Home, Info, Phone, Star} from "lucide-react";
+import RouterDemo from "./router-demo/RouterDemo.tsx";
+/*
 type NavItem = {
     label: string;
     href: string;
@@ -19,6 +15,7 @@ const navItems: NavItem[] = [
     {label: 'Contact', href: '#', icon: Phone}
 ];
 
+ */
 
 
 const App = () => {
@@ -27,11 +24,12 @@ const App = () => {
     return (
         <>
             {/* Navbar */}
+            {/*
             <Navbar title="EventApp" items={navItems} />
             <Hero/>
             <EventList/>
             <Footer/>
-
+            */}
 
 
             { /*
@@ -42,6 +40,7 @@ const App = () => {
             <Toast message="Please enter a valid email!" type="info" onClose={() => alert('Toast Closed')}/>
             */}
 
+            <RouterDemo />
         </>
     );
 
